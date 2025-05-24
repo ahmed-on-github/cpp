@@ -32,7 +32,7 @@ class Complex{
         return real;
     }
     float getImag(){
-        return imag;
+        return this->imag;
     }
     Complex* getComplex(){
         return this;
@@ -41,33 +41,40 @@ class Complex{
         std::cout << "Real: " << real << ", Imaginary: " << imag << std::endl;
     }
     /*Operations*/
-    void add(Complex *a, Complex *b ){
-        if(a && b ){
+    void add(Complex *a, Complex *b );
+    Complex sub(Complex *a, Complex *b);
+    Complex mul(Complex *a, Complex *b);
+    Complex div(Complex *a, Complex *b);
+};
+/*Operations*/
+    void Complex::add(Complex *a, Complex *b ){
+        if(a && b){
             this->real = a->real + b->real;
             this->imag = a->imag + b->imag;
         }
     }
-    Complex sub(Complex *a, Complex *b){
+    Complex Complex::sub(Complex *a, Complex *b){
         Complex c;
         c.real = a->real - b->real;
         c.imag = a->imag - b->imag;
         return c;
     }
-    Complex mul(Complex *a, Complex *b){
+    Complex Complex::mul(Complex *a, Complex *b){
         Complex c;
         c.real = a->real * b->real - a->imag * b->imag;
         c.imag = a->real * b->imag + a->imag * b->real;
         return c;
     }
-    Complex div(Complex *a, Complex *b){
+    Complex Complex::div(Complex *a, Complex *b){
         Complex c;
         float denom = b->real * b->real + b->imag * b->imag;
         c.real = (a->real * b->real + a->imag * b->imag) / denom;
         c.imag = (a->imag * b->real - a->real * b->imag) / denom;
         return c;
     }
-};
 
+
+            
 int main(){
 
     Complex a(3.2, 4) , b , c(4);
