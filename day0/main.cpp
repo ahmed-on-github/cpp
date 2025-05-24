@@ -1,5 +1,5 @@
 #include <iostream>
-
+ 
 class Complex{
     float real, imag;
 
